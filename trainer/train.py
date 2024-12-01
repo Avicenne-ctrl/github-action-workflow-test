@@ -15,7 +15,7 @@ from tensorflow.keras.datasets import boston_housing
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--l_r', dest='lr', default=0.001, type=float, help='learning rate')
+parser.add_argument('--l_r', dest='l_r', default=0.001, type=float, help='learning rate')
 parser.add_argument('--n_estimators', dest='n_estimators', default=100, type=int, help='n_estimators')
 parser.add_argument( '--max_depth',dest='max_depth',  default=6, type=int, help='max_depth')
 parser.add_argument( '--subsample', dest='subsample', default=0.8, type=float, help='subsample')
@@ -65,6 +65,4 @@ if mse < best_mse:
     joblib.dump(xgb, best_model_path)
 else:
     print("[INFO] : Current model did not outperform the best model.")
-
-
     
