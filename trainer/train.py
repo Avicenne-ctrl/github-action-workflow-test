@@ -37,11 +37,15 @@ def load_data():
     # Convertir les ensembles de données en DataFrames pandas
     return pd.DataFrame(x_train, columns=columns), pd.Series(y_train), pd.DataFrame(x_test, columns=columns), pd.Series(y_test)
 
-
+print("[INFO] : load dataset...")
 x_train, y_train, x_val, y_val = load_data()
+print("[INFO] : dataset loaded")
 
-xgb = XGBRegressor(args.n_estimators, args.max_depth, args.l_r, args.subsample)    
+xgb = XGBRegressor(objective="reg:squarederror", random_state=42)    
 
+print(x_train.shape, type(x_train))
+print(len(y_train), type(y_train))
+print("[INFO] : train model")
 xgb.fit(x_train, y_train)
 pred = xgb.predict(x_val)
 mse = mean_squared_error(y_val, pred)
