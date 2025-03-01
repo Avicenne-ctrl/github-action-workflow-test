@@ -3,3 +3,4 @@ scikit-learn
 argparse
 pandas
 numpy
+tensorflow
