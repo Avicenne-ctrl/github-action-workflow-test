@@ -1,14 +1,28 @@
-
-name: First Cron Job
+name: Train Model
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"  # Exécute toutes les 5 minutes
+  push:
+    branches:
+      - main  # Trigger only on pushes to the main branch
 
 jobs:
-  cron:
+  train:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run a one-line script
-        run: echo "Hello, world!"
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install xgboost scikit-learn joblib
+
+    - name: Run training script
+      run: |
+        python train.py
