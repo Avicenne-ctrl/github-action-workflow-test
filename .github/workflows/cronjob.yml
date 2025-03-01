@@ -1,0 +1,14 @@
+
+name: First Cron Job
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # Exécute toutes les 5 minutes
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run a one-line script
+        run: echo "Hello, world!"
