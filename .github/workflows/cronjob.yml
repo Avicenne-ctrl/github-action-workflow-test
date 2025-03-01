@@ -4,6 +4,7 @@ name: First Cron Job
 on:
   schedule:
     - cron: "*/5 * * * *"  # Exécute toutes les 5 minutes
+  workflow_dispatch:  # Permet de le lancer manuellement
 
 jobs:
   cron:
